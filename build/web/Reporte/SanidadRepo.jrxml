@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="2e6e6e61-7761-418e-a955-cdce71338c23">
+	<property name="ireport.zoom" value="1.948717100000005"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="cod" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT  "VACU_FECHA", "VACU_NOTA", "GANA_COD_GANADO", "NOMBRE_VACU",
+CASE WHEN "VACU_TIPO" = 1 THEN 'Obligatorio'  WHEN  "VACU_TIPO"= 2 THEN 'Otro tipo' END
+FROM public."VACUNACIONES", public."GANADOS", public."VACUNACION_NOM" 
+WHERE "GANA_ID_GANADO" =  "VACU_ID_GANADO" AND "ID_VACU_NOMBRE" = "VACU_NOMBRE" 
+AND "GANA_COD_GANADO" = $P{cod};]]>
+	</queryString>
+	<field name="VACU_FECHA" class="java.sql.Date"/>
+	<field name="VACU_NOTA" class="java.lang.String"/>
+	<field name="GANA_COD_GANADO" class="java.lang.String"/>
+	<field name="NOMBRE_VACU" class="java.lang.String"/>
+	<field name="case" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="85" splitType="Stretch">
+			<staticText>
+				<reportElement x="96" y="17" width="75" height="20" uuid="fbd6b46a-85ce-4378-98a3-96240aff7704"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROPIETARIO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="96" y="34" width="75" height="20" uuid="fc2abd53-30f3-48f7-abb3-13cb0b84b39d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCION:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="96" y="50" width="75" height="20" uuid="d3542644-6eb3-4cf3-ba2f-56d9ff8f0d2d"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TELEFONO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="96" y="0" width="75" height="20" uuid="ce5c6bba-5e8c-470d-955c-d80b2e713016"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRANJA:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="408" y="14" width="100" height="20" uuid="0ef3fbe4-4c19-4420-a6da-14a585d95453"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA DEL REPORTE]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="408" y="34" width="100" height="20" uuid="41854f96-12c8-4826-9133-b7584a20a8f9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="81" width="555" height="1" uuid="45d7d758-bfa8-45b1-94fa-126596d20e72"/>
+			</line>
+			<staticText>
+				<reportElement x="171" y="17" width="100" height="20" uuid="1870b06c-bcf1-426b-8b28-34549d67a1e4"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[  Miguel Rodriguez]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="171" y="50" width="139" height="20" uuid="860fc73a-c875-4bf4-b6c8-e052f663049b"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[  0984-103673  0982-121653]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="171" y="34" width="153" height="20" uuid="e53df8a8-acdf-42e8-8fcb-5f5afac8f3f3"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[  Isla pucu- Pindoty/ Cordillera]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="171" y="0" width="75" height="20" uuid="40cd6268-eefa-4750-819e-eb56d1afc852"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[  San Miguel]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="-2" width="143" height="83" uuid="7d5aadd0-f2b5-4be7-8299-158dae12bdff"/>
+				<imageExpression><![CDATA["C:\\Users\\Ocampos\\Documents\\NetBeansProjects\\sitbloc\\web\\Recursos\\img\\logo nuevo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="22" splitType="Stretch">
+			<staticText>
+				<reportElement x="159" y="1" width="184" height="20" uuid="ffc5946f-fa71-4c79-8304-9966a2850c21"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[  Reporte de sanidad del ganado Nro:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="343" y="1" width="40" height="19" uuid="b8e119d2-e5f2-4bbc-af4e-f221dbd2f95b"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cod}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="20" width="555" height="1" uuid="701413ab-a316-4bcc-addb-0d37f1fdfa45"/>
+			</line>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="21" splitType="Stretch">
+			<staticText>
+				<reportElement x="6" y="1" width="69" height="20" uuid="22f3009b-dfda-4a5c-a671-f708b6079aa9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Fecha Vac.]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="96" y="1" width="88" height="20" uuid="70a95c63-679b-4d05-a084-741465f68e5f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Vacuna Aplicada]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="213" y="1" width="67" height="20" uuid="ab54a9f3-cd2c-4bd1-9442-7d91a78b2ed9"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tipo ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="296" y="0" width="87" height="20" uuid="ed854347-2e0d-4a75-b134-30225a352429"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Notas añadidas]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="24" splitType="Stretch">
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="6" y="0" width="69" height="20" uuid="40fa19a7-2d52-4ea4-888d-14ea741f9d9a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VACU_FECHA}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="96" y="2" width="88" height="20" uuid="bfc9d81b-c814-450d-b5ea-d760d6b7204f"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{NOMBRE_VACU}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="196" y="2" width="100" height="20" uuid="214e8620-d4ef-40cb-9604-18cca1cbc905"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{case}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="306" y="0" width="202" height="20" uuid="2deac9f2-85b5-49a7-9b70-81396591c2ec"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{VACU_NOTA}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="22" width="555" height="1" uuid="e73072cc-49ec-4c5d-a364-d7c6be9f21a4"/>
+			</line>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="23" splitType="Stretch">
+			<staticText>
+				<reportElement x="2" y="1" width="112" height="20" uuid="b244e5a9-686f-4dc6-962b-9556a9a9f17a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Firma del Veterinario:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="0" width="555" height="1" uuid="fd5bae7d-7152-4e2b-9f09-43cfa369f1e6"/>
+			</line>
+		</band>
+	</pageFooter>
+</jasperReport>

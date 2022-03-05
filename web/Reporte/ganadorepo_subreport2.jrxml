@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="ganadorepo_subreport2" language="groovy" pageWidth="555" pageHeight="802" columnWidth="555" leftMargin="0" rightMargin="0" topMargin="0" bottomMargin="0" uuid="438c58c3-9456-4ebc-891c-93d6b6c7301e">
+	<property name="ireport.zoom" value="1.610510000000001"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<queryString language="SQL">
+		<![CDATA[Select (SELECT count("GANA_COD_GANADO") FROM public."GANADOS" where "GANA_ESTADO"= 'Activo') as "activos",
+    (SELECT count("GANA_COD_GANADO") FROM public."GANADOS" where "GANA_ESTADO"= 'Inactivo') as "inactivos"
+    FROM public."GANADOS"
+    group by "activos","inactivos"]]>
+	</queryString>
+	<field name="activos" class="java.lang.Long"/>
+	<field name="inactivos" class="java.lang.Long"/>
+	<group name="activos">
+		<groupExpression><![CDATA[$F{activos}]]></groupExpression>
+	</group>
+	<group name="inactivos">
+		<groupExpression><![CDATA[$F{inactivos}]]></groupExpression>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<detail>
+		<band height="59" splitType="Stretch">
+			<textField>
+				<reportElement x="243" y="8" width="100" height="20" uuid="fe8586d9-d1ca-4d7e-ad8f-0bdfd5a8a852"/>
+				<textFieldExpression><![CDATA[$F{activos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="257" y="28" width="100" height="20" uuid="8247c777-caca-4239-adcb-b1731761ee4a"/>
+				<textFieldExpression><![CDATA[$F{inactivos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="157" y="8" width="100" height="20" uuid="17450323-0d75-4968-b3c4-0984010d1a76"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ganados Activos:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="157" y="28" width="100" height="20" uuid="268ba0c0-9549-434e-83f7-a21afda10e19"/>
+				<textElement>
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[Ganados Inactivos:]]></text>
+			</staticText>
+		</band>
+	</detail>
+</jasperReport>

@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8c8d1842-466a-43f2-91ac-83d7e33472d6">
+	<property name="ireport.zoom" value="2.1435888100000042"/>
+	<property name="ireport.x" value="21"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="cod" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<parameter name="SUBREPORT_DIR" class="java.lang.String" isForPrompting="false">
+		<defaultValueExpression><![CDATA["C:\\Users\\Ocampos\\Documents\\NetBeansProjects\\sitbloc\\web\\Reporte\\"]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT  "CONT_FECHA", "CONT_PESO", "GANA_COD_GANADO", "ALIM_DESCRIPCION",
+CASE WHEN "CONT_OBSERVACION" IS NULL THEN '-' ELSE "CONT_OBSERVACION" END
+	FROM public."CONTROL" ,public."GANADOS", PUBLIC."ALIMENTOS"
+	WHERE "GANA_ID_GANADO" = "CONT_ID_GANADO"
+	AND "CONT_ID_ALIMENTO"="ALIM_ID_ALIMENTOS"
+	AND "GANA_ESTADO" = 'Activo' and "GANA_COD_GANADO" = $P{cod};]]>
+	</queryString>
+	<field name="CONT_FECHA" class="java.sql.Date"/>
+	<field name="CONT_PESO" class="java.math.BigDecimal"/>
+	<field name="GANA_COD_GANADO" class="java.lang.String"/>
+	<field name="ALIM_DESCRIPCION" class="java.lang.String"/>
+	<field name="CONT_OBSERVACION" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="91" splitType="Stretch">
+			<staticText>
+				<reportElement x="115" y="20" width="75" height="20" uuid="3a68cde7-b6fc-4736-a6a3-564c6c5c4b96"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[PROPIETARIO:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="416" y="17" width="100" height="20" uuid="2907b6f7-6636-4465-a825-3956b0d09daf"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA DEL REPORTE]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="53" width="75" height="20" uuid="42a88c7d-58cd-4619-abda-808e0362135b"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[TELEFONO:]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yy">
+				<reportElement x="416" y="34" width="100" height="20" uuid="256f806b-62ad-43ac-9b28-0348afd4d1be"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="115" y="37" width="75" height="20" uuid="40a4ad6a-9db5-42da-8d73-501935c37504"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIRECCION:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="115" y="3" width="75" height="20" uuid="9a5a009b-abee-4b8c-aa38-5fc2910feb30"/>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[GRANJA:]]></text>
+			</staticText>
+			<line>
+				<reportElement x="0" y="90" width="555" height="1" uuid="08f3500d-ea6a-4bac-8e34-6a5c43812d66"/>
+			</line>
+			<staticText>
+				<reportElement x="190" y="3" width="75" height="20" uuid="5b76f2d7-be0f-4dab-937f-693546fd4cab"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[   San Miguel]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="20" width="100" height="20" uuid="cb04b46e-e64f-4c21-b4bc-0b74e46b3724"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[   Miguel Rodriguez]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="37" width="153" height="20" uuid="0cfcef2e-8800-4ae3-ae7c-cf087672f7b4"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[   Isla pucu- Pindoty/ Cordillera]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="190" y="53" width="139" height="20" uuid="60dd01d2-66d0-4c00-9f40-4ff5b79e6557"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[   0984-103673  0982-121653]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="3" width="162" height="87" uuid="c0b752f3-f17c-4d11-8bee-e447482015ea"/>
+				<imageExpression><![CDATA["C:\\Users\\Ocampos\\Documents\\NetBeansProjects\\sitbloc\\web\\Recursos\\img\\logo nuevo.jpg"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="75" splitType="Stretch">
+			<subreport>
+				<reportElement x="0" y="0" width="555" height="74" uuid="c1363107-6495-4727-b4f0-6f32dce00ea1"/>
+				<subreportParameter name="cod">
+					<subreportParameterExpression><![CDATA[$P{cod}]]></subreportParameterExpression>
+				</subreportParameter>
+				<connectionExpression><![CDATA[$P{REPORT_CONNECTION}]]></connectionExpression>
+				<subreportExpression><![CDATA[$P{SUBREPORT_DIR} + "subhistorial.jasper"]]></subreportExpression>
+			</subreport>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="24" splitType="Stretch">
+			<staticText>
+				<reportElement x="16" y="4" width="56" height="20" uuid="b8f8e8f4-0806-46ec-875b-4d2b15851663"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="136" y="1" width="66" height="20" uuid="34d401a1-d8fa-4f56-9e30-f8f28427e845"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PESO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="316" y="4" width="100" height="20" uuid="d66bb7eb-1bd9-4025-bb24-4bbbdcc11690"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[OBSERVACIONES]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="219" y="0" width="71" height="20" uuid="d2e3a027-32fa-4332-9d4d-a55433c2aa01"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<text><![CDATA[DIETA]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="21" splitType="Stretch">
+			<textField pattern="dd/MM/yy">
+				<reportElement x="0" y="0" width="127" height="20" uuid="4736dd05-89ec-4382-88d8-b454839bb21a"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{CONT_FECHA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="###0.00">
+				<reportElement x="127" y="0" width="83" height="20" uuid="4caced80-5d4d-4dc2-bea9-7f1ea2440441"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{CONT_PESO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="316" y="0" width="118" height="20" uuid="39f2a01a-55f8-4059-99cc-f8ade7607efb"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{CONT_OBSERVACION}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="0" y="20" width="555" height="1" uuid="31740492-1464-4f5c-a0ca-84c1aa3ae2f3"/>
+			</line>
+			<textField>
+				<reportElement x="219" y="0" width="84" height="20" uuid="6ac4a2e4-86a7-47f6-a101-4e6754f1be63"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{ALIM_DESCRIPCION}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<pageFooter>
+		<band height="37" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="115" height="12" uuid="8cdc8322-a77a-439f-b22b-5330344bc363"/>
+				<textElement>
+					<font size="8" isBold="true"/>
+				</textElement>
+				<text><![CDATA[VETERINARIO ENCARGADO:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="432" y="0" width="80" height="20" uuid="9d5bcc5b-0210-4191-95d0-dfcf4a2c6f49"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="499" y="0" width="40" height="20" uuid="75706086-d4d3-49a0-9dcb-aeabe064ab09"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="h:mm a">
+				<reportElement x="455" y="20" width="86" height="14" uuid="ab85506c-fb20-409f-8c1a-e9b654936f22"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+</jasperReport>

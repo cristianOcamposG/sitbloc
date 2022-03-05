@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="report name" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="561809f6-c7c5-4484-bf94-7f427596d3e8">
+	<property name="ireport.zoom" value="2.1435888100000033"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="cod" class="java.lang.String">
+		<defaultValueExpression><![CDATA[]]></defaultValueExpression>
+	</parameter>
+	<queryString>
+		<![CDATA[SELECT "GANA_FEC_NACIMIENTO","CONT_PESO", "RAZA_DESCRIPCION", "LOTE_DESCRIPCION"
+FROM PUBLIC."CONTROL", PUBLIC."GANADOS",  PUBLIC."RAZAS", PUBLIC."LOTES"
+WHERE "GANA_ID_GANADO" = "CONT_ID_GANADO" 
+AND "GANA_ID_RAZA" = "RAZA_ID_RAZA"
+AND "GANA_ID_LOTE" = "LOTE_ID_LOTE"
+AND "GANA_COD_GANADO" = $P{cod}
+ORDER BY "CONT_ID_CONTROL" DESC LIMIT 1;]]>
+	</queryString>
+	<field name="GANA_FEC_NACIMIENTO" class="java.sql.Date"/>
+	<field name="CONT_PESO" class="java.math.BigDecimal"/>
+	<field name="RAZA_DESCRIPCION" class="java.lang.String"/>
+	<field name="LOTE_DESCRIPCION" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<pageHeader>
+		<band height="44" splitType="Stretch">
+			<staticText>
+				<reportElement x="29" y="0" width="118" height="20" uuid="83b4374a-57a5-4536-8a69-a5dfcb276143"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[CODIGO DEL GANADO :]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="29" y="20" width="128" height="20" uuid="1c46e4e3-5c9b-45f4-8028-055d53b32402"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[PESO ACTUAL EN KG :]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="147" y="0" width="28" height="20" uuid="7e5d21bc-dffe-4fa8-b7fd-2365dd5f469c"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{cod}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="147" y="20" width="59" height="20" uuid="356cdf5f-9dff-474f-921c-054211b409a4"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{CONT_PESO}]]></textFieldExpression>
+			</textField>
+			<line>
+				<reportElement x="-14" y="40" width="555" height="1" uuid="d8a84a17-0f39-4110-8f28-072ec3e60587"/>
+			</line>
+			<staticText>
+				<reportElement x="246" y="0" width="40" height="20" uuid="fd1d91e7-4c63-4f2f-8fc5-02b31bfe8e78"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[RAZA : ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="286" y="0" width="74" height="20" uuid="5e343890-47c7-492b-839c-6883f990ab72"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{RAZA_DESCRIPCION}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="246" y="20" width="40" height="20" uuid="158071d5-ccb3-4cd4-8488-8cb1b45e7366"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[LOTE: ]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="286" y="20" width="74" height="20" uuid="f93697c7-a686-4fa1-8d8e-7b47bda5f39e"/>
+				<textElement verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{LOTE_DESCRIPCION}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="437" y="0" width="104" height="20" uuid="29dfd0cd-1a21-4991-a609-5d41b5cb4a61"/>
+				<textElement verticalAlignment="Middle">
+					<font size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[FECHA NACIMIENTO:  : ]]></text>
+			</staticText>
+			<textField pattern="dd/MM/yyyy">
+				<reportElement x="437" y="20" width="104" height="20" uuid="f48f36aa-2006-4a36-9850-1d412f734794"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{GANA_FEC_NACIMIENTO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+</jasperReport>
